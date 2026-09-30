@@ -2,6 +2,8 @@
 
 The existing portfolio will be updated later. This repository preserves the material needed for an honest case study.
 
+The [product operating pack](START-HERE.md) is a planning artifact for AI platform teams managing multiple assistants. Its use cases and SOPs demonstrate product reasoning; they do not establish customer validation or implemented multi-assistant functionality.
+
 ## Proposed narrative
 
 1. Problem: an improved average can conceal a high-impact regression.
@@ -20,6 +22,8 @@ The existing portfolio will be updated later. This repository preserves the mate
 - A benchmark version, sample size, and scoring definition with every metric
 - Decisions changed by user feedback
 - A failure the system missed, and the resulting product change
+- Why the product direction expanded from one assistant's release report to shared platform evaluation, and what research supports or challenges that choice
+- Evidence of second-assistant reuse and verified source separation before claiming platform value
 
 ## Claims allowed today
 

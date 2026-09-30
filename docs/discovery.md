@@ -2,6 +2,8 @@
 
 Status: planned. No interviews, design partners, or production results yet.
 
+These are the original discovery prompts. The [research plan](research-plan.md) now defines recruitment and sessions for the selected multi-assistant platform-team audience; the [working templates](templates.md) hold the reusable decision and research forms.
+
 ## Interview prompts
 
 1. Walk me through the last incorrect answer your assistant produced. Who noticed?
@@ -27,6 +29,8 @@ Show the candidate run. Ask the participant to decide whether to ship and explai
 | Expose segment results | Averages can obscure concentrated failures | Users need a different slice such as tenant or language |
 | Zero tolerance on critical rules | Simple, explainable release contract | Labeled pilot data reveals false blocks |
 | No automatic deployment | No actual release integration or authority model yet | Authenticated integration and approvals exist |
+| Target teams managing multiple assistants | Product owner selected this audience; shared evaluation is a hypothesis | Discovery shows the need is assistant-specific or already solved |
+| Two-assistant shadow pilot before a fleet dashboard | Tests reuse and separation with limited scope | Manual cross-assistant triage proves valuable and burdensome |
 
 ## Competitive research backlog
 

@@ -1,18 +1,26 @@
-# Product brief · v0.1
+# Product brief · v0.2
+
+Product direction updated September 29, 2026. See the [product operating pack](START-HERE.md) and [pilot PRD](prd.md) for requirements and procedures.
 
 ## User and job
 
-Initial user hypothesis: an AI platform engineer maintaining an internal support or policy assistant. Partner user: the support operations lead accountable for incorrect answers. Job: decide whether a retrieval or corpus change can ship and explain that decision to another team.
+Selected target: AI platform teams managing multiple assistants. Primary user: the platform engineer standardizing evaluation across assistants. Partner user: each assistant's release owner. Buyer hypothesis: head of AI platform. Job: make repeatable release decisions using shared rules while preserving assistant-specific sources, benchmarks, permissions, and thresholds.
+
+The proposed pilot covers two assistants in one organization, in shadow mode. The existing Northstar policy assistant remains a single-assistant demonstration. No multi-assistant interface or isolation system is implemented yet.
 
 ## Problem hypothesis
 
-Aggregate evaluation scores can obscure high-impact failures in small user segments. Connecting a bad answer to its source and release change may be slow. Both hypotheses need customer discovery; no interviews have been completed.
+Aggregate evaluation scores can obscure high-impact failures in small user segments. Connecting a bad answer to its source and release change may be slow. Platform teams may also duplicate evaluation work across assistants. These hypotheses need customer discovery; no interviews have been completed. Selecting this target is a product direction, not evidence of demand.
 
 ## Initial product promise
 
 Give every release decision an inspectable trail: question → role → answer → source → failed rule → suggested next step.
 
+Platform extension: reuse the evaluation contract across assistants while keeping each assistant's result and evidence separate. An aggregate improvement must never override an individual assistant's critical failure.
+
 ## Scope and acceptance criteria
+
+The following describes implemented demo behavior; the [PRD](prd.md) distinguishes proposed pilot requirements.
 
 1. Compare baseline and candidate on identical cases. Clearly identify fixtures and scoring method.
 2. Block any critical access, freshness, or citation failure even when average quality rises.
@@ -28,6 +36,7 @@ Give every release decision an inspectable trail: question → role → answer �
 - False-block rate: safe releases incorrectly blocked / reviewed safe releases.
 - Operational: evaluation cost and elapsed time per release, human-review burden.
 - Adoption: weekly use in an actual release workflow, not just demo visits.
+- Platform reuse: second-assistant setup effort and evaluation coverage per assistant, without relaxing evidence boundaries.
 
 No numerical pilot targets are justified yet. Establish a baseline with design partners first.
 
@@ -41,9 +50,9 @@ No numerical pilot targets are justified yet. Establish a baseline with design p
 ## Roadmap with evidence gates
 
 1. Current: functional local evaluator and demo, automated tests, product decisions.
-2. Discovery: five interviews and two observed release decisions. Revise persona and scope from evidence.
-3. Integration: ingest traces from one real pipeline; add document manifests and versioned benchmarks.
-4. Evaluation: independent human labels, held-out tests, semantic metrics, judge calibration, attack cases.
-5. Workflow: repository checks, persisted run history, authenticated users, access enforcement, deployment gate integration.
+2. Discovery: five initial practitioner sessions and two observed release workflows. Revise persona and scope from evidence.
+3. Integration: approved traces from two assistants in one team; source manifests, assistant boundaries, expected-case checks, and versioned benchmarks.
+4. Evaluation: independent human labels, held-out tests, paired workflow experiments, and explicit error/burden measurements. Semantic scoring follows evidence of need.
+5. Workflow: authenticated review, persisted run history, and customer deployment integration after pilot validation. Current repository CI tests the harness only.
 
-LLM generation, embeddings, arbitrary document import, self-healing, and autonomous deployment are not implemented.
+Multi-assistant management, LLM generation, embeddings, arbitrary document import, self-healing, and autonomous deployment are not implemented.

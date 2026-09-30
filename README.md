@@ -59,6 +59,8 @@ This is an MVP evaluation harness, not a production security boundary or a compl
 
 ## Product work
 
+Start with the [product operating pack](docs/START-HERE.md): ten use cases, the pilot PRD, decision ownership, three SOPs, metrics, discovery, risks, roadmap, launch gates, and seven reusable working templates. The chosen target is AI platform teams managing multiple assistants; the current implementation remains a single-assistant synthetic demo.
+
 - [Product brief and scope](docs/product-brief.md)
 - [Evaluation contract and limitations](docs/evaluation.md)
 - [Trace import format](docs/trace-format.md)
