@@ -16,7 +16,7 @@ Correctness is a narrow proxy, not semantic correctness or groundedness. An answ
 
 ## Release policy
 
-Any critical issue → BLOCK. Otherwise correctness below the chosen threshold → REVIEW. Otherwise → PASS. Default threshold: 80%. Quality is rounded to a whole percentage before threshold comparison in v0.1. Zero-case input is rejected. Imported traces use a fixed 80% floor in the current UI.
+Any critical issue → BLOCK. Otherwise correctness below the chosen threshold → REVIEW. Otherwise → PASS. Default threshold: 80%. Threshold comparisons use the exact ratio; displayed quality is rounded to one decimal. Zero-case input is rejected. Imported traces use a fixed 80% floor in the current UI.
 
 ## Reproducible fixture outcomes
 

@@ -31,6 +31,10 @@ test('quality threshold changes REVIEW to PASS without changing results', () => 
   assert.equal(compare('baseline',60).candidate.summary.verdict,'PASS');
   assert.equal(compare('baseline',80).candidate.summary.verdict,'REVIEW');
 });
+test('rounding cannot promote a release across its quality threshold', () => {
+  assert.equal(compare('baseline',63).candidate.summary.verdict,'REVIEW');
+  assert.equal(compare('baseline',63).candidate.summary.quality,62.5);
+});
 test('unknown profile and invalid thresholds fail explicitly', () => {
   assert.throws(()=>compare('invented'),/Unknown/);
   for(const q of [-1,101,NaN,1.5]) assert.throws(()=>compare('candidate',q),/threshold/);

@@ -4,6 +4,8 @@
 
 An average quality score can improve while an assistant starts exposing restricted information or citing outdated policies. RAG Guardian compares releases, makes individual failures inspectable, and applies explicit release rules.
 
+![RAG Guardian release dashboard](docs/dashboard.png)
+
 ## Run locally
 
 Requires Node.js 22 or newer. No dependencies, API keys, or paid services.

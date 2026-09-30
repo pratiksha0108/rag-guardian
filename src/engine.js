@@ -28,10 +28,11 @@ export function evaluateTrace(test, trace, sources = documents) {
 
 export function summarize(rows, minQuality = 80) {
   if (!rows.length) throw new Error('At least one evaluation case is required.');
-  const quality = Math.round(rows.filter(r => r.correct).length / rows.length * 100);
+  const exactQuality = rows.filter(r => r.correct).length / rows.length * 100;
+  const quality = Math.round(exactQuality * 10) / 10;
   const critical = rows.filter(r => r.issues.some(i => i.severity === 'critical')).length;
   const warnings = rows.filter(r => r.issues.some(i => i.severity === 'warning')).length;
-  const verdict = critical ? 'BLOCK' : quality < minQuality ? 'REVIEW' : 'PASS';
+  const verdict = critical ? 'BLOCK' : exactQuality < minQuality ? 'REVIEW' : 'PASS';
   const latencies = rows.map(r => r.latencyMs).sort((a, b) => a - b);
   return { total: rows.length, quality, critical, warnings, passed: rows.filter(r => r.passed).length, verdict, minQuality, p95Ms: latencies[Math.ceil(latencies.length * .95) - 1], segments: [...new Set(rows.map(r => r.segment))].map(name => { const subset = rows.filter(r => r.segment === name); return { name, passed: subset.filter(r => r.passed).length, total: subset.length }; }) };
 }
