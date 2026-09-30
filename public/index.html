@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#163f35"><title>RAG Guardian · Release intelligence</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<aside class="sidebar">
+  <a class="brand" href="/" aria-label="RAG Guardian home"><span class="mark">g<span>•</span></span><span>RAG Guardian<small>RELEASE INTELLIGENCE</small></span></a>
+  <div class="workspace"><span class="avatar">N</span><span>Northstar workspace<small>Fictional company · local demo</small></span></div>
+  <p class="nav-label">WORKSPACE</p>
+  <nav aria-label="Main navigation"><button data-view="overview" class="active"><span>◈</span> Release overview</button><button data-view="evaluations"><span>◎</span> Evaluation lab</button><button data-view="knowledge"><span>▤</span> Knowledge sources</button><button data-view="decisions"><span>◇</span> Product notebook</button></nav>
+  <div class="sidebar-bottom"><span class="pulse"></span> Local evaluation engine<small>Extractive retrieval · no API key</small><p>Trust is a release criterion.</p></div>
+</aside>
+<main>
+  <header><div><span class="breadcrumb">Workspace</span><span class="slash">/</span><span id="page-label">Release overview</span></div><span class="demo-label">SYNTHETIC DEMO</span></header>
+  <div id="message" role="status" aria-live="polite"></div>
+  <section id="content" aria-label="Application content"><p class="loading">Preparing your release workspace…</p></section>
+  <footer>RAG Guardian / v0.1 <span>Measured locally. Fictional policies. No production claims.</span></footer>
+</main>
+<dialog id="trace-dialog" aria-labelledby="trace-title"><div id="trace-content"></div><button id="close-dialog" class="secondary">Close evidence</button></dialog>
+<input type="file" id="trace-file" accept=".json,application/json" hidden>
+<script type="module" src="/app.js"></script>
+</body></html>
