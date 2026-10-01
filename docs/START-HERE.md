@@ -6,7 +6,9 @@ This pack supports the next product decisions, customer conversations, and pilot
 
 ## Start with these decisions
 
-**September 30 implementation update:** the [Salesforce dataset lab](dataset-card.md) adds a pinned public-source corpus, a fictional support corpus, local retrieval, and a human-review queue. This is not the proposed authenticated two-assistant customer pilot. Begin our collaborative testing with [review session 01](review-session-01.md). No external interviews or independent label reviews have been completed.
+**Current direction:** focus the first visitor experience on whether an assistant stays within its business role, avoids unauthorized promises, and uses approved information. The home page now demonstrates this with a fictional café, scripted flawed and safer responses, and narrow rule checks. See the [current implementation and next milestone](../README.md). This supersedes the review-queue entry experience below; the older platform documents remain proposed operating workflows. No real agent monitoring, independent validation, or cost savings have been demonstrated.
+
+**Earlier September 30 implementation:** the [Salesforce dataset lab](dataset-card.md) adds a pinned public-source corpus, a fictional support corpus, local retrieval, and a human-review queue. This remains available as a builder tool, not a task for visitors or the proposed authenticated two-assistant customer pilot. No external interviews or independent label reviews have been completed.
 
 1. Which repeated release decisions across assistants are painful enough for a platform team to standardize?
 2. Can an independent reviewer use our evidence to make that decision correctly?

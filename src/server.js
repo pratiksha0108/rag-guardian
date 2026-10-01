@@ -5,6 +5,7 @@ import { compare, importReport } from './engine.js';
 import { documents, profiles } from './data.js';
 import { assistants, loadDataset } from './datasets.js';
 import { answerQuestion, evaluateDataset } from './retrieval.js';
+import { policy, simulateReply, checkBehavior } from './business.js';
 
 const files = { '/visitor.js': ['../public/visitor.js', 'text/javascript'], '/': ['../public/simple.html', 'text/html'], '/datasets': ['../public/simple.html', 'text/html'], '/simple.js': ['../public/simple.js', 'text/javascript'], '/simple.css': ['../public/simple.css', 'text/css'], '/advanced': ['../public/index.html', 'text/html'], '/dataset-lab': ['../public/datasets.html', 'text/html'], '/app.js': ['../public/app.js', 'text/javascript'], '/style.css': ['../public/style.css', 'text/css'], '/datasets.js': ['../public/datasets.js', 'text/javascript'] };
 export function createServer() {
@@ -12,6 +13,14 @@ export function createServer() {
     const send = (status, body, type = 'application/json') => { res.writeHead(status, { 'Content-Type': type + '; charset=utf-8', 'X-Content-Type-Options': 'nosniff', 'Cache-Control': 'no-store', 'Content-Security-Policy': "default-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'" }); res.end(type === 'application/json' ? JSON.stringify(body) : body); };
     try {
       const url = new URL(req.url, 'http://localhost');
+      if(req.method==='GET' && url.pathname==='/api/business')return send(200,policy);
+      if(req.method==='GET' && url.pathname==='/business.js')return send(200,await readFile(new URL('../public/business.js',import.meta.url)),'text/javascript');
+      if(req.method==='POST' && ['/api/business/reply','/api/business/check'].includes(url.pathname)) {
+        if(req.headers.origin && req.headers.origin!==`http://${req.headers.host}`)return send(403,{error:'Cross-origin requests are not allowed.'});
+        let body='';for await(const chunk of req){body+=chunk;if(Buffer.byteLength(body)>16000)return send(413,{error:'Request limit is 16 KB.'});}
+        const input=JSON.parse(body);
+        return send(200,url.pathname.endsWith('/reply')?simulateReply(input?.question,input?.mode):checkBehavior(input));
+      }
       if (req.method === 'GET' && url.pathname === '/api/datasets') return send(200, assistants.map(a=>{ const d=loadDataset(a.id); return {...a,documents:d.documents.length,developmentCases:d.cases.length,reservedCases:d.reservedCount}; }));
       const datasetRoute=url.pathname.match(/^\/api\/datasets\/([a-z-]+)(?:\/(evaluate|query))?$/);
       if (datasetRoute) {

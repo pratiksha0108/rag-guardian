@@ -71,7 +71,7 @@ test('query route validates scope and keeps reserved split out of web workflow',
   try {
     assert.equal((await fetch(base+'/datasets')).status,200);
     const home=await (await fetch(base+'/')).text();
-    assert.match(home,/visitor.js/);
+    assert.match(home,/business.js/);
     assert.equal(await (await fetch(base+'/datasets')).text(),home);
     assert.match(await (await fetch(base+'/advanced')).text(),/app.js/);
     assert.match(await (await fetch(base+'/dataset-lab')).text(),/datasets.js/);

@@ -1,14 +1,26 @@
 # RAG Guardian
 
-**Evidence-driven release decisions for RAG applications.**
+**Catch assistants that go off-task, make unsupported claims, or break business rules.**
 
-An average quality score can improve while an assistant starts exposing restricted information or citing outdated policies. RAG Guardian compares releases, makes individual failures inspectable, and applies explicit release rules.
+A factually correct answer can still be wrong for a business: a café assistant doing homework is not doing its assigned job. RAG Guardian's product direction is to help AI platform teams inspect these failures across assistants, understand the applicable rule, and retest changed behavior. This is a prototype direction, not a validated customer outcome.
 
 ![RAG Guardian guided start](docs/simple-start.png)
 
 ## Start here
 
-The home page is an interactive chat demo, not a review task. Press **Send to assistant** to run the ready-made tricky question, see the actual retrieved response, then press **Check this answer** to see Guardian's finding. **Try a normal question** provides a comparison. Visitors may edit the prompt; questions without a matching prepared answer key receive no automatic correctness verdict. Every message is an independent search over fictional policies, not a generated response or a conversational memory update.
+The home page is a business-behavior sandbox for fictional Northstar Café. Send the prepared homework question, check it with Guardian, then choose **Try safer behavior** and check again. Opening hours provide an on-task comparison; free-meal and allergen prompts demonstrate unauthorized promises and unsupported claims.
+
+Assistant replies are scripted simulations, not generated AI answers. The independent checker uses narrow topic patterns and recognized response text, not a general semantic evaluator. Unknown or mixed requests and unrecognized replies receive REVIEW. A refusal can pass even when the request was off-topic. The safer replay selects a prepared response; Guardian does not automatically fix or block an agent. Session findings and business rules can be exported as JSON. Refreshing clears session history.
+
+The café policy and simulation are in `src/business.js`; no McDonald's incident is recreated or claimed. This adds a policy-testing demo alongside the existing RAG retrieval experiments, not a new full RAG pipeline.
+
+## Next product milestone
+
+The next proposed increment is read-only analysis of imported, sanitized conversations against an explicit assistant purpose and business policy. It needs a trustworthy trace format, assistant identity, reviewed labels, and a broader evaluator before it can claim detection on arbitrary conversations. Start in shadow mode: report findings without blocking customer replies.
+
+Measure flagged-response precision, missed violations, and false alarms on correct refusals against a separately reviewed dataset. Cost attribution requires actual token and pricing records; this demo does not estimate wasted spending. Live integrations, real-time enforcement, policy uploads, authentication, and production monitoring are not implemented. Earlier PM documents remain the broader platform hypothesis, not claims that these capabilities exist.
+
+## Earlier Salesforce work
 
 The eight support answer keys have an [AI source consistency review](datasets/salesforce-support/ai-review.json). Seven pipeline responses pass; one retrieves unrelated evidence. This review is not independent human validation and does not approve a release. Existing user review notes remain untouched in the optional builder lab.
 
