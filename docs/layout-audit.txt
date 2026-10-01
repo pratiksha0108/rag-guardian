@@ -1,0 +1,10 @@
+Layout cleanup audit
+
+1. Existing result screen: needs improvement. layout-before.png shows the question and answer taking most of the viewport; the captured accessibility tree also shows a verdict and the same filled composer below. Source storage is not visible. Buttons have readable labels, but competing states make the next action unclear.
+
+Changes: a compact source panel identifies the bundled fictional policies, shows their contents on demand, and links their project file. Upload support is explicitly unavailable. The chat has separate compose, answer, and result states. After checking, the exchange collapses under View conversation. New question clears the previous exchange, verdict and draft; saved builder reviews are untouched.
+
+2. Revised entry screen: verified in the local browser. Source information and question entry are separate. Screenshot: simple-start.png.
+3. Revised result screen: verified in the local browser. One verdict remains visible; the exchange is optional and a New question button resets the view. Screenshot: layout-result.png.
+
+Accessibility scope: checked visible labels, keyboard activation and focus movement in the in-app browser. Hidden inactive forms use the hidden attribute. Full screen-reader, contrast and zoom compliance were not audited. No claim of complete accessibility compliance.

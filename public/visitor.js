@@ -14,16 +14,32 @@ async function api(path, options) {
 }
 function lock(value) {
   busy = value;
-  document.querySelectorAll('#chat-form button, #prompt, [data-prompt], #check-answer').forEach(el => el.disabled = value);
+  document.querySelectorAll('#chat-form button, #prompt, [data-prompt], #check-answer, #new-question').forEach(el => el.disabled = value);
+}
+function resetQuestion() {
+  response = null;
+  $('#conversation').innerHTML = '';
+  $('#conversation').hidden = false;
+  $('#guardian').innerHTML = '';
+  $('#chat-form').hidden = false;
+  $('#suggestions').hidden = false;
+  $('#message').textContent = '';
+  $('#prompt').value = '';
+  $('#prompt-help').textContent = 'Choose an example above, or write your own question.';
+  $('#prompt').focus();
 }
 function start() {
-  $('#content').innerHTML = `<p class="eyebrow">Try it yourself</p>
-    <h1>Ask. Watch. Catch the mistake.</h1>
-    <p class="intro">Send the ready-made question to our sample assistant. Then let RAG Guardian check its answer.</p>
+  $('#content').innerHTML = `<h1>Test an assistant’s answer.</h1>
+    <p class="intro">Choose a question. See the answer. Check it with Guardian.</p>
+    <section class="source-panel" aria-label="Data source">
+      <div class="chat-heading"><div><p class="eyebrow">Data source</p><strong>Sample company policies</strong></div><button id="view-policies" aria-expanded="false" aria-controls="policy-content">View policies</button></div>
+      <p class="muted">6 fictional policies · stored in this project · ready to use</p>
+      <div id="policy-content" hidden></div>
+      <p class="source-note">Using the included sample. Policy uploads aren’t supported yet.</p>
+    </section>
     <section class="card chat-card" aria-label="Sample assistant chat">
-      <div class="chat-heading"><strong>Salesforce support assistant</strong><span class="tag">Live local search</span></div>
-      <p class="muted">Knows made-up company policies. Doesn't know how to write code.</p>
-      <div class="prompt-options"><button type="button" data-prompt="mistake">Try a tricky question</button><button type="button" data-prompt="working">Try a normal question</button></div>
+      <div class="chat-heading"><strong>Salesforce support assistant</strong><span class="tag">Sample chat</span></div>
+      <div class="prompt-options" id="suggestions"><button type="button" data-prompt="mistake">Tricky question</button><button type="button" data-prompt="working">Normal question</button></div>
       <div id="conversation" aria-live="polite"></div>
       <section id="guardian" aria-live="polite"></section>
       <form id="chat-form"><label for="prompt">Your message</label><textarea id="prompt" rows="2" required maxlength="2000">${prompts.mistake}</textarea>
@@ -35,7 +51,21 @@ function start() {
 document.addEventListener('click', async e => {
   const b = e.target.closest('button');
   if (!b || busy) return;
+  if (b.id === 'new-question') { resetQuestion(); return; }
+  if (b.id === 'view-policies') {
+    const panel = $('#policy-content');
+    if (!panel.hidden) { panel.hidden = true; b.setAttribute('aria-expanded','false'); b.textContent = 'View policies'; return; }
+    b.disabled = true;
+    try {
+      const dataset = await api('/api/datasets/salesforce-support');
+      panel.innerHTML = '<p class="muted">These are made-up Northstar policies, not official Salesforce guidance. Archived policies and role restrictions affect which documents a search may use.</p>' + dataset.documents.map(d=>`<details><summary>${esc(d.title)} · ${esc(d.status)}</summary><p>${esc(d.text)}</p><p class="muted">Available to: ${esc(d.roles.join(', '))}</p></details>`).join('') + '<p class="muted">Saved in <code>datasets/salesforce-support/corpus.json</code> in the project. The local server reads this file; no Salesforce connection is used.</p><a href="https://github.com/pratiksha0108/rag-guardian/blob/main/datasets/salesforce-support/corpus.json" target="_blank" rel="noreferrer">View the source file on GitHub</a>';
+      panel.hidden = false; b.setAttribute('aria-expanded','true'); b.textContent = 'Hide policies';
+    } catch(err) { $('#message').textContent = 'Could not load the policies. Please try again.'; }
+    finally { b.disabled = false; }
+    return;
+  }
   if (b.dataset.prompt) {
+    resetQuestion();
     $('#prompt').value = prompts[b.dataset.prompt];
     $('#prompt-help').textContent = b.dataset.prompt === 'mistake'
       ? 'This asks how a piece of code creates an account. No coding knowledge needed—just press Send.'
@@ -57,7 +87,9 @@ document.addEventListener('click', async e => {
           ? 'You asked about code. The assistant returned rules about test data. Those rules do not answer your question—it should have said it did not know.'
           : row.passed ? 'The response matches the prepared answer and source checks for this question.' : 'The response does not match the prepared answer or source for this question.';
       }
-      $('#guardian').innerHTML = `<div class="completion" tabindex="-1" id="verdict"><p class="eyebrow">RAG Guardian</p><h2>${esc(title)}</h2><p>${esc(description)}</p>${same ? `<details><summary>See the expected answer</summary><p>${esc(row.expected === null ? 'Say there is not enough information available to answer.' : row.referenceAnswer)}</p><p class="muted">Prepared sample check, not a guarantee of correctness.</p></details>` : ''}<p class="muted">Try the other suggested question above to compare.</p></div>`;
+      const conversation = $('#conversation').innerHTML;
+      $('#conversation').innerHTML = '';
+      $('#guardian').innerHTML = `<div class="completion ${same && !row.passed ? 'result-warning' : ''}" tabindex="-1" id="verdict"><p class="eyebrow">Guardian result</p><h2>${esc(title)}</h2><p>${esc(description)}</p><details><summary>View conversation</summary>${conversation}</details>${same ? `<details><summary>Expected answer</summary><p>${esc(row.expected === null ? 'Say there is not enough information available to answer.' : row.referenceAnswer)}</p><p class="muted">Prepared sample check, not a guarantee of correctness.</p></details>` : ''}</div><button class="primary wide" id="new-question">New question</button>`;
       $('#verdict').focus();
       $('#verdict').scrollIntoView({block:'nearest', behavior:'smooth'});
     } catch (err) { $('#message').textContent = err.message; b.textContent = 'Check this answer'; }
@@ -75,6 +107,8 @@ document.addEventListener('submit', async e => {
   if (!question) { $('#prompt').focus(); return; }
   response = null;
   $('#message').textContent = '';
+  $('#chat-form').hidden = true;
+  $('#suggestions').hidden = true;
   $('#guardian').innerHTML = '';
   $('#conversation').innerHTML = `<div class="bubble user-bubble"><strong>You</strong><p>${esc(question)}</p></div><p role="status">Assistant is searching its documents…</p>`;
   lock(true);
@@ -82,12 +116,14 @@ document.addEventListener('submit', async e => {
   try {
     response = await api('/api/datasets/salesforce-support/query', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({question, role:'agent'})});
     $('#conversation').innerHTML = `<div class="bubble user-bubble"><strong>You</strong><p>${esc(question)}</p></div><div class="bubble"><strong>Assistant</strong><p>${esc(response.answer)}</p><small>Exact result from this search</small>${response.chunks.length ? `<details><summary>Source used</summary>${response.chunks.map(c=>`<p>${esc(c.title)}</p>`).join('')}</details>` : ''}</div>`;
-    $('#guardian').innerHTML = '<div class="card"><h2>Did it answer your question?</h2><p>You don’t have to decide. Let RAG Guardian check.</p><button class="primary" id="check-answer">Check this answer →</button></div>';
+    $('#guardian').innerHTML = '<div class="check-actions"><button class="primary" id="check-answer">Check this answer →</button><button id="new-question">New question</button></div>';
     $('#check-answer').focus();
     $('#conversation').scrollIntoView({block:'start', behavior:'smooth'});
   } catch(err) {
     $('#conversation').innerHTML = '<p>The search could not finish. Your message is still below—try sending it again.</p>';
     $('#message').textContent = err.message;
+    $('#chat-form').hidden = false;
+    $('#suggestions').hidden = false;
   } finally { lock(false); $('#send').textContent = 'Send to assistant →'; }
 });
 start();
