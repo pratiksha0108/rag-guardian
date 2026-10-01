@@ -1,0 +1,29 @@
+RAG Guardian: policy-change verification
+
+Customer hypothesis
+Agencies and AI platform teams managing multiple assistants repeatedly need to verify behavior after policies change. This is unvalidated, not an established market claim.
+
+Job to be done
+When an approved business policy changes, test whether the assistant follows the new rule while continuing to answer legitimate customer requests.
+
+Current implementation
+Two fictional changes: refunds from 24 to 48 hours; opening time from 8 to 9 am.
+Each has three authored cases, including unchanged behavior. Three scripted assistant versions show stale answers, excessive refusal and updated answers. Exact-match checks compare actual fixture responses against authored expectations. Unknown response text requires review. Export includes baseline and latest comparison, policy, evidence, method and simulation labels.
+This is not an external bot integration, generated test suite, semantic evaluator or production release approval.
+
+Next discovery
+Interview teams about their last policy update, existing tests, review time, missed regressions and false alarms. Seek redacted examples and evidence of repeated work. Do not assume small cafe owners need another subscription.
+
+Next implementation gates
+1. Sanitized conversation import with validation and explicit retention controls.
+2. Versioned policies and human-approved expected outcomes.
+3. Read-only test-environment assistant adapter, with explicit data-sharing consent.
+4. Broader evaluation against independently reviewed holdout cases.
+5. Pilot measurement before claiming business value.
+
+Success measures to validate
+Review time per change; confirmed regression detection; false-alarm rate; legitimate-answer refusal rate; time to verify a fix. No numerical improvements have been measured yet.
+
+Preserved work
+/behavior-lab retains the original cafe behavior demonstration.
+/dataset-lab and /advanced retain earlier retrieval and release experiments.

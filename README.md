@@ -1,14 +1,16 @@
 # RAG Guardian
 
-**Catch assistants that go off-task, make unsupported claims, or break business rules.**
+**Verify that policy changes reach your assistant without breaking useful answers.**
 
 A factually correct answer can still be wrong for a business: a café assistant doing homework is not doing its assigned job. RAG Guardian's product direction is to help AI platform teams inspect these failures across assistants, understand the applicable rule, and retest changed behavior. This is a prototype direction, not a validated customer outcome.
 
-![RAG Guardian guided start](docs/simple-start.png)
+The current direction is policy-change verification for agencies and AI platform teams. Customer demand and business value are hypotheses, not validated outcomes. See [product direction](docs/policy-change-direction.txt).
 
 ## Start here
 
-The home page is a business-behavior sandbox for fictional Northstar Café. Send the prepared homework question, check it with Guardian, then choose **Try safer behavior** and check again. Opening hours provide an on-task comparison; free-meal and allergen prompts demonstrate unauthorized promises and unsupported claims.
+The home page compares old, overly restrictive and updated scripted assistants against the same three authored cases. Choose a refund-window or opening-time change, test the old assistant, and compare the prepared alternatives. Expand each result for the answer and expectation, or export the comparison. Exact-match checks are illustrative, not general-purpose evaluation or deployment approval.
+
+The original business-behavior sandbox remains at `/behavior-lab`: send the prepared homework question, check it with Guardian, then try safer behavior. Existing dataset and release experiments are preserved.
 
 Assistant replies are scripted simulations, not generated AI answers. The independent checker uses narrow topic patterns and recognized response text, not a general semantic evaluator. Unknown or mixed requests and unrecognized replies receive REVIEW. A refusal can pass even when the request was off-topic. The safer replay selects a prepared response; Guardian does not automatically fix or block an agent. Session findings and business rules can be exported as JSON. Refreshing clears session history.
 
