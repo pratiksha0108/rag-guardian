@@ -1,0 +1,31 @@
+RAG Guardian product direction and next steps
+
+Why we are building this
+AI platform teams need to know whether their assistants do the work they were authorized to do. Correct facts alone are insufficient: a support assistant can solve homework correctly while failing its business purpose. Guardian should connect each finding to the assistant's job, the conversation evidence, and a practical next action.
+
+Primary user
+An AI product or platform owner responsible for several business assistants. The public visitor is a secondary audience who needs to understand the problem without technical setup. Keep the guided playground separate from builder tools.
+
+Current evidence and limits
+The café prototype demonstrates off-task work, unauthorized offers, unsupported allergen claims, and appropriate refusals. Responses are scripted. Checks recognize narrow patterns and response text. Session exports exist, but production monitoring, semantic evaluation, policy uploads, real cost attribution, and measured customer value do not. User feedback in this conversation supports a clearer interactive demo, not a claim of market demand.
+
+Priority 1: Make the first experience clear
+Keep a single primary action at each step. Show the business purpose before asking for a prompt. Provide labeled scenario buttons with words and optional emoji. Give loading, empty, error, and unknown outcomes clear explanations. Keep completed conversations collapsed and make reset obvious. In the visual redesign, use a coherent palette, strong text contrast, keyboard focus, and animations that can be reduced or disabled. Do not celebrate an unsafe reply or imply that a scripted replay is an automated repair.
+Acceptance: first-time testers can explain the business problem and complete send, check, and safer replay without assistance. Measure completion rate, time to the first understood finding, and points of confusion. Set numeric targets after collecting a baseline, not by inventing current performance.
+
+Priority 2: Make it useful with real evidence
+Build a read-only conversation importer, initially using synthetic or explicitly sanitized JSON. Define assistant identity, approved purpose, business rules, customer request, assistant response, and source references. Validate size and format. Explain storage and deletion before accepting data. Do not persist confidential traces in the public GitHub repository. Separate imported evidence from simulated conversations in every report.
+Acceptance: valid imports can be inspected and exported; invalid or incomplete evidence cannot earn a PASS; cross-assistant policy mixups are rejected. Import is not implemented yet.
+
+Priority 3: Improve checking beyond fixed examples
+Evaluate a broader classifier or optional model against independently reviewed conversations. Include paraphrases, mixed intents, correct refusals, unsupported facts, and borderline legitimate requests. Unknown should remain a real result. Measure precision, missed violations, and false alarms on correct refusals. Keep an untouched evaluation set and record evaluator and policy versions.
+Acceptance: publish measured performance and limitations before calling this a general detector. Do not treat the authored scripted scenarios as an independent benchmark.
+
+Priority 4: Support a team decision
+Group findings by assistant and business rule, compare the same test before and after a change, and export evidence for an owner to act on. Start with reporting in shadow mode. Only consider blocking replies after false-positive rates and failure modes are understood. Attribute spending only when real usage and pricing records are available.
+
+Design intent
+Colorful, quirky, and polished rather than metric-heavy. Explore lilac, peach, mint, cream, and strong dark text. Use emoji as supporting cues, never as the only accessible label. Motion should explain transitions: a sending state, a checking state, a result reveal, and a before/after comparison. Respect prefers-reduced-motion; avoid flashing and endlessly moving text. Remove the ambiguous Free sample demo header while retaining truthful simulation disclosure close to the assistant.
+
+Next decision
+Choose one of the visual concepts, implement it in the existing app, then build the bounded conversation-import workflow. No paid service, real-customer-data collection, or production integration is approved by this plan.

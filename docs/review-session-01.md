@@ -5,7 +5,7 @@ Status: ready to begin; no human judgments have been recorded by the agent. This
 ## Start in the browser
 
 1. Start the app with `npm start` and open http://127.0.0.1:4317/datasets.
-2. Select **Salesforce support** for the easiest first session. These are fictional company rules, so you only need to check the displayed evidence—not know Salesforce administration.
+2. Select **Salesforce support** for the easiest first session. These are fictional company rules, so you only need to check the displayed evidence, not know Salesforce administration.
 3. Click **Run development tests**. A REVIEW recommendation is expected because the labels are still drafts.
 4. Review SUP-01 through SUP-05. For each, inspect the reference answer, role, source, and actual retrieved excerpt.
 5. Choose **Expected answer looks correct**, **Needs a correction**, or **I am unsure**, and add a short note. Save each review.

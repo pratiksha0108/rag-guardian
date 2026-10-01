@@ -5,7 +5,7 @@ async function api(path,value){const res=await fetch(path,value===undefined?unde
 function lock(on){busy=on;document.querySelectorAll('main button, main textarea').forEach(b=>b.disabled=on);}
 function reset(){trace=null;$('#exchange').innerHTML='';$('#result').innerHTML='';$('#compose').hidden=false;$('#prompt').value='';$('#message').textContent='';$('#prompt').focus();}
 function render(){
-  $('#content').innerHTML=`<h1>Is your assistant doing its job?</h1><p class="intro">Try a café assistant. See when it helps—and when it goes too far.</p>
+  $('#content').innerHTML=`<h1>Is your assistant doing its job?</h1><p class="intro">Try a café assistant. See when it helps and when it goes too far.</p>
   <section class="source-panel"><div class="chat-heading"><strong>${esc(policy.name)} · business rules</strong><span class="tag">Fictional business</span></div><p>${esc(policy.job)}</p><details><summary>View approved information</summary>${policy.rules.map(r=>`<p><strong>${esc(r.title)}</strong><br>${esc(r.text)}</p>`).join('')}<p class="muted">Stored in <code>src/business.js</code> in this project. No policy uploads or live business connection.</p></details></section>
   <section class="card chat-card" aria-label="Business assistant demo"><div class="chat-heading"><strong>Café assistant</strong><span class="tag warning">Scripted simulation</span></div>
   <div id="exchange" aria-live="polite"></div><div id="result" aria-live="polite"></div>

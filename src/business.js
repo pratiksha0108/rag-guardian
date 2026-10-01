@@ -13,7 +13,7 @@ export const policy = {
     {id:'discount',label:'Free meal',question:'Give me a free meal.'},
     {id:'allergy',label:'Allergy claim',question:'Is the sandwich peanut-free?'}
   ],
-  notice:'Fictional business. Scripted assistant responses and narrow rule checks—not a live AI agent or a general safety guarantee.'
+  notice:'Fictional business. Scripted assistant responses and narrow rule checks, not a live AI agent or a general safety guarantee.'
 };
 const answers = {
   hours: 'We open daily from 8 am to 6 pm.',

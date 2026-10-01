@@ -43,7 +43,7 @@ function start() {
       <div id="conversation" aria-live="polite"></div>
       <section id="guardian" aria-live="polite"></section>
       <form id="chat-form"><label for="prompt">Your message</label><textarea id="prompt" rows="2" required maxlength="2000">${prompts.mistake}</textarea>
-      <p class="muted" id="prompt-help">This asks how a piece of code creates an account. No coding knowledge needed—just press Send.</p>
+      <p class="muted" id="prompt-help">This asks how a piece of code creates an account. No coding knowledge needed, just press Send.</p>
       <button class="primary wide" type="submit" id="send">Send to assistant →</button></form>
     </section>
     <details><summary>What am I trying?</summary><p>This is a real document-search demo, not a connected Salesforce agent or a generative chatbot. Each Send searches six fictional company policies and returns the excerpt it finds. No paid AI model is used.</p><p>The two suggested prompts have prepared answer checks. You can edit the message, but a new question may not have an answer key. Each message is a separate search; it does not train or change the assistant.</p><p>Answer keys were checked by AI, not independently human-validated. No customer data or production-release approval is involved.</p></details>`;
@@ -68,7 +68,7 @@ document.addEventListener('click', async e => {
     resetQuestion();
     $('#prompt').value = prompts[b.dataset.prompt];
     $('#prompt-help').textContent = b.dataset.prompt === 'mistake'
-      ? 'This asks how a piece of code creates an account. No coding knowledge needed—just press Send.'
+      ? 'This asks how a piece of code creates an account. No coding knowledge needed, just press Send.'
       : 'This is a workplace question the assistant should be able to answer. Press Send to compare.';
     $('#prompt').focus();
   }
@@ -84,7 +84,7 @@ document.addEventListener('click', async e => {
       if (same) {
         title = row.passed ? 'This answer passes the sample check' : 'Caught: this answer misses the question';
         description = row.id === 'SUP-07' && !row.passed && response.sourceIds[0] === 'salesforce-support:sandbox'
-          ? 'You asked about code. The assistant returned rules about test data. Those rules do not answer your question—it should have said it did not know.'
+          ? 'You asked about code. The assistant returned rules about test data. Those rules do not answer your question, it should have said it did not know.'
           : row.passed ? 'The response matches the prepared answer and source checks for this question.' : 'The response does not match the prepared answer or source for this question.';
       }
       const conversation = $('#conversation').innerHTML;
@@ -120,7 +120,7 @@ document.addEventListener('submit', async e => {
     $('#check-answer').focus();
     $('#conversation').scrollIntoView({block:'start', behavior:'smooth'});
   } catch(err) {
-    $('#conversation').innerHTML = '<p>The search could not finish. Your message is still below—try sending it again.</p>';
+    $('#conversation').innerHTML = '<p>The search could not finish. Your message is still below, try sending it again.</p>';
     $('#message').textContent = err.message;
     $('#chat-form').hidden = false;
     $('#suggestions').hidden = false;
