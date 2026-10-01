@@ -1,0 +1,20 @@
+Lavender design assets
+
+Selected direction: user-approved option 1, preserved in lavender-reference.png.
+
+public/assets/guardian-sprite.png
+Generated with built-in image generation, using the selected reference.
+Brief: matching cute lavender 3D cafe robot holding a cream coffee mug; transparent horizontal idle, closed-eye blink and raised-mug cheers poses; no text or plants.
+Output: 1774 x 887 RGBA. CSS uses the three horizontal frames.
+
+public/assets/cafe-stage.png
+Generated with built-in image generation, using the selected reference.
+Brief: transparent cafe stage with cream tabletop, plants, small chalkboard, coffee sticker, mint sparkles and peach heart; clear center for animated robot; no robot baked into stage.
+Output: 1254 x 1254 RGBA.
+
+public/assets/shield-check.svg
+Official Tabler filled shield-check icon, MIT license.
+Source: https://raw.githubusercontent.com/tabler/tabler-icons/main/icons/filled/shield-check.svg
+License preserved in public/assets/tabler-LICENSE.
+
+No runtime external asset requests or paid API calls required.
