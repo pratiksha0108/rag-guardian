@@ -18,3 +18,9 @@ Source: https://raw.githubusercontent.com/tabler/tabler-icons/main/icons/filled/
 License preserved in public/assets/tabler-LICENSE.
 
 No runtime external asset requests or paid API calls required.
+
+Revision: independently articulated mascot
+public/assets/guardian-parts.png
+Built-in image generation, referenced guardian-sprite.png.
+Prompt: create transparent production animation parts atlas of matching lavender robot. Body with blank dark face, antenna, chest star and resting right arm; remove viewer-left arm and mug. Separate detached bent viewer-left arm holding cream smiling coffee mug. Preserve soft 3D materials and lighting. No text or extra characters.
+Output: 2172 x 724 RGBA. Body and arm are separately positioned with CSS. Face expressions are UI overlays. Only the arm animates on a passing check; flagged responses show sad eyes and a frown.

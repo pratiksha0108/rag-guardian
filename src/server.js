@@ -13,6 +13,7 @@ export function createServer() {
     const send = (status, body, type = 'application/json') => { res.writeHead(status, { 'Content-Type': type + '; charset=utf-8', 'X-Content-Type-Options': 'nosniff', 'Cache-Control': 'no-store', 'Content-Security-Policy': "default-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'" }); res.end(type === 'application/json' ? JSON.stringify(body) : body); };
     try {
       const url = new URL(req.url, 'http://localhost');
+      if(req.method==='GET'&&url.pathname==='/assets/guardian-parts.png')return send(200,await readFile(new URL('../public/assets/guardian-parts.png',import.meta.url)),'image/png');
       const designFiles={'/lavender.css':['../public/lavender.css','text/css'],'/assets/guardian-sprite.png':['../public/assets/guardian-sprite.png','image/png'],'/assets/cafe-stage.png':['../public/assets/cafe-stage.png','image/png'],'/assets/shield-check.svg':['../public/assets/shield-check.svg','image/svg+xml']};
       if(req.method==='GET'&&designFiles[url.pathname]){const [path,type]=designFiles[url.pathname];return send(200,await readFile(new URL(path,import.meta.url)),type);}
       if(req.method==='GET' && url.pathname==='/api/business')return send(200,policy);

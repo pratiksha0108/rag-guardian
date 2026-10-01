@@ -15,11 +15,11 @@ test('business UI runs flawed and safer replies, counts checks and clears old re
   await events.submit({target:{id:'compose'},preventDefault(){}});
   assert.match(element('#exchange').innerHTML,/96/);
   await click('check');assert.match(element('#result').innerHTML,/Off-task work/);
-  assert.equal(element('#mascot').attributes['data-mood'],'idle');
+  assert.equal(element('#mascot').attributes['data-mood'],'sad');
   await click('safer');assert.match(element('#exchange').innerHTML,/cannot do homework/);
   await click('check');assert.match(element('#result').innerHTML,/Stayed on task/);
   assert.equal(element('#mascot').attributes['data-mood'],'cheer');
-  events.animationend({animationName:'toast'});
+  events.animationend({animationName:'hand-cheers'});
   assert.equal(element('#mascot').attributes['data-mood'],'idle');
   await click('cheers');assert.equal(element('#mascot').attributes['data-mood'],'cheer');
   assert.match(element('#session-summary').innerHTML,/2 checks this session: 1 flagged, 1 passed/);

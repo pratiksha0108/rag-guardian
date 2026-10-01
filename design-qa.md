@@ -1,5 +1,11 @@
 # Lavender implementation QA
 
+## Follow-up: compact layout and stable mascot
+
+User requested smaller proportions and hand-only movement. Maximum page width is now 1120px, headline capped at 58px, and scene reduced to 350px. Robot body and arm are independent layers; whole-body breathing and sprite swaps are disabled. Passing check verified in browser: armAnimation=hand-cheers, bodyAnimation=none, bodyTransform=none. Flagged check verified with sad eyes and frown; proof in docs/guardian-sad.png. Neutral review is not depicted as a failure.
+
+Added café-owner value section and clear current-versus-planned availability. No integration or pilot signup claimed. Desktop inspected at 1440 x 1000; mobile at 390 x 844, with content width exactly 390px. All 41 tests pass after updated reaction assertions. Earlier reference captures below document the original iteration, not this smaller revision.
+
 final result: passed
 
 ## Reference and captures
