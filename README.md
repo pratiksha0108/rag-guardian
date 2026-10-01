@@ -8,7 +8,7 @@ An average quality score can improve while an assistant starts exposing restrict
 
 ## Start here
 
-The home page is a visitor demo, not a review task. Click **Show me an example** to run the Salesforce support sample and see an unrelated answer explained. No visitor answers or Salesforce knowledge are required. The page names the fictional dataset and distinguishes retrieved excerpts from generated answers.
+The home page is an interactive chat demo, not a review task. Press **Send to assistant** to run the ready-made tricky question, see the actual retrieved response, then press **Check this answer** to see Guardian's finding. **Try a normal question** provides a comparison. Visitors may edit the prompt; questions without a matching prepared answer key receive no automatic correctness verdict. Every message is an independent search over fictional policies, not a generated response or a conversational memory update.
 
 The eight support answer keys have an [AI source consistency review](datasets/salesforce-support/ai-review.json). Seven pipeline responses pass; one retrieves unrelated evidence. This review is not independent human validation and does not approve a release. Existing user review notes remain untouched in the optional builder lab.
 
