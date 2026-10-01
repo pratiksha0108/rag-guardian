@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "assistantId": "salesforce-lwc",
+  "repository": "trailheadapps/lwc-recipes",
+  "revision": "7524748ece585fc08413b3fcfb2e5494e24f29ed",
+  "retrievedAt": "2026-10-01T01:44:04.901Z",
+  "license": "CC0-1.0",
+  "purpose": "Small educational source-code retrieval corpus, not general Salesforce documentation.",
+  "files": [
+    {
+      "path": "LICENSE.md",
+      "file": "raw/LICENSE.md",
+      "sha256": "d504e681c66e5b9b23bd0ff751d2cd721da2f99f983b5a5fd0bb138135e4e8d9",
+      "bytes": 7045,
+      "url": "https://github.com/trailheadapps/lwc-recipes/blob/7524748ece585fc08413b3fcfb2e5494e24f29ed/LICENSE.md"
+    },
+    {
+      "path": "README.md",
+      "file": "raw/README.md",
+      "sha256": "d027e8bfe5e2733d198624e58de3f6f0776c2dcbfb3887ae255a957eb1966da5",
+      "bytes": 9900,
+      "url": "https://github.com/trailheadapps/lwc-recipes/blob/7524748ece585fc08413b3fcfb2e5494e24f29ed/README.md"
+    },
+    {
+      "path": "force-app/main/default/lwc/pubsub/README.md",
+      "file": "raw/force-app__main__default__lwc__pubsub__README.md",
+      "sha256": "b17bc9f8991c75af13fcbd42378f0f88acfbf5f4326da6b8ad1029c960207256",
+      "bytes": 978,
+      "url": "https://github.com/trailheadapps/lwc-recipes/blob/7524748ece585fc08413b3fcfb2e5494e24f29ed/force-app/main/default/lwc/pubsub/README.md"
+    },
+    {
+      "path": "force-app/main/default/lwc/apexImperativeMethod/apexImperativeMethod.js",
+      "file": "raw/force-app__main__default__lwc__apexImperativeMethod__apexImperativeMethod.js",
+      "sha256": "f1c7f12788396538b223bc446e4bd448ded2e126586479d1d7ac32a52f8b7ef0",
+      "bytes": 458,
+      "url": "https://github.com/trailheadapps/lwc-recipes/blob/7524748ece585fc08413b3fcfb2e5494e24f29ed/force-app/main/default/lwc/apexImperativeMethod/apexImperativeMethod.js"
+    },
+    {
+      "path": "force-app/main/default/lwc/apexImperativeMethod/apexImperativeMethod.html",
+      "file": "raw/force-app__main__default__lwc__apexImperativeMethod__apexImperativeMethod.html",
+      "sha256": "af6cfd4f070214ff8b2c74251b93697ca136fd10d61664324404912df53c21c8",
+      "bytes": 926,
+      "url": "https://github.com/trailheadapps/lwc-recipes/blob/7524748ece585fc08413b3fcfb2e5494e24f29ed/force-app/main/default/lwc/apexImperativeMethod/apexImperativeMethod.html"
+    },
+    {
+      "path": "force-app/main/default/lwc/apexWireMethodWithParams/apexWireMethodWithParams.js",
+      "file": "raw/force-app__main__default__lwc__apexWireMethodWithParams__apexWireMethodWithParams.js",
+      "sha256": "055bec21af8a2208eca3f878f0a8329392ac5505b0529e0c5fc5263ec0d747c7",
+      "bytes": 888,
+      "url": "https://github.com/trailheadapps/lwc-recipes/blob/7524748ece585fc08413b3fcfb2e5494e24f29ed/force-app/main/default/lwc/apexWireMethodWithParams/apexWireMethodWithParams.js"
+    },
+    {
+      "path": "force-app/main/default/lwc/apexWireMethodWithParams/apexWireMethodWithParams.html",
+      "file": "raw/force-app__main__default__lwc__apexWireMethodWithParams__apexWireMethodWithParams.html",
+      "sha256": "352368c9b81da5837d7a56b3eb5889182cb4841fb2ea1b327f30db4f2f1a1e82",
+      "bytes": 995,
+      "url": "https://github.com/trailheadapps/lwc-recipes/blob/7524748ece585fc08413b3fcfb2e5494e24f29ed/force-app/main/default/lwc/apexWireMethodWithParams/apexWireMethodWithParams.html"
+    },
+    {
+      "path": "force-app/main/default/lwc/ldsCreateRecord/ldsCreateRecord.js",
+      "file": "raw/force-app__main__default__lwc__ldsCreateRecord__ldsCreateRecord.js",
+      "sha256": "95c2b9ca5255413c7a42bbbd154d41b58a7953380e0393045731caa288797f8d",
+      "bytes": 1357,
+      "url": "https://github.com/trailheadapps/lwc-recipes/blob/7524748ece585fc08413b3fcfb2e5494e24f29ed/force-app/main/default/lwc/ldsCreateRecord/ldsCreateRecord.js"
+    },
+    {
+      "path": "force-app/main/default/lwc/ldsCreateRecord/ldsCreateRecord.html",
+      "file": "raw/force-app__main__default__lwc__ldsCreateRecord__ldsCreateRecord.html",
+      "sha256": "e423ec024d4ddce8aaf5050fadec7798817b7e5a2225fc6bf6e31e2b21bb6227",
+      "bytes": 995,
+      "url": "https://github.com/trailheadapps/lwc-recipes/blob/7524748ece585fc08413b3fcfb2e5494e24f29ed/force-app/main/default/lwc/ldsCreateRecord/ldsCreateRecord.html"
+    },
+    {
+      "path": "force-app/main/default/lwc/wireGetRecord/wireGetRecord.js",
+      "file": "raw/force-app__main__default__lwc__wireGetRecord__wireGetRecord.js",
+      "sha256": "57172fd98c2292496df2d04a34a27d6c2dc24cffeeade38b4687d067e41a4630",
+      "bytes": 575,
+      "url": "https://github.com/trailheadapps/lwc-recipes/blob/7524748ece585fc08413b3fcfb2e5494e24f29ed/force-app/main/default/lwc/wireGetRecord/wireGetRecord.js"
+    },
+    {
+      "path": "force-app/main/default/lwc/wireGetRecord/wireGetRecord.html",
+      "file": "raw/force-app__main__default__lwc__wireGetRecord__wireGetRecord.html",
+      "sha256": "42c634b2f50c51fac21c44768395dda4931d4d17d761a19a8991e738bd548a8c",
+      "bytes": 632,
+      "url": "https://github.com/trailheadapps/lwc-recipes/blob/7524748ece585fc08413b3fcfb2e5494e24f29ed/force-app/main/default/lwc/wireGetRecord/wireGetRecord.html"
+    },
+    {
+      "path": "force-app/main/default/lwc/navToRecord/navToRecord.js",
+      "file": "raw/force-app__main__default__lwc__navToRecord__navToRecord.js",
+      "sha256": "d4a0b18e7002a769a4ceb727aeb64cb2b3e8ae0870ec6ca5483508c1615a2e84",
+      "bytes": 886,
+      "url": "https://github.com/trailheadapps/lwc-recipes/blob/7524748ece585fc08413b3fcfb2e5494e24f29ed/force-app/main/default/lwc/navToRecord/navToRecord.js"
+    },
+    {
+      "path": "force-app/main/default/lwc/navToRecord/navToRecord.html",
+      "file": "raw/force-app__main__default__lwc__navToRecord__navToRecord.html",
+      "sha256": "ec5b0d97d4b60981b779d1268f2198ae473eedda2f2ed2ccf787f38ef4af94eb",
+      "bytes": 1258,
+      "url": "https://github.com/trailheadapps/lwc-recipes/blob/7524748ece585fc08413b3fcfb2e5494e24f29ed/force-app/main/default/lwc/navToRecord/navToRecord.html"
+    },
+    {
+      "path": "force-app/main/default/lwc/miscToastNotification/miscToastNotification.js",
+      "file": "raw/force-app__main__default__lwc__miscToastNotification__miscToastNotification.js",
+      "sha256": "0c6ccdb73b41018296a872969a5cbef9aaa955fb692f63f572914ac2e03058a3",
+      "bytes": 943,
+      "url": "https://github.com/trailheadapps/lwc-recipes/blob/7524748ece585fc08413b3fcfb2e5494e24f29ed/force-app/main/default/lwc/miscToastNotification/miscToastNotification.js"
+    },
+    {
+      "path": "force-app/main/default/lwc/miscToastNotification/miscToastNotification.html",
+      "file": "raw/force-app__main__default__lwc__miscToastNotification__miscToastNotification.html",
+      "sha256": "d7412fd7f938c5327b719daf24e32abce89b99b84509e9aa9f300e4b78d34eff",
+      "bytes": 1200,
+      "url": "https://github.com/trailheadapps/lwc-recipes/blob/7524748ece585fc08413b3fcfb2e5494e24f29ed/force-app/main/default/lwc/miscToastNotification/miscToastNotification.html"
+    }
+  ]
+}

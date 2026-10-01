@@ -6,6 +6,8 @@ This pack supports the next product decisions, customer conversations, and pilot
 
 ## Start with these decisions
 
+**September 30 implementation update:** the [Salesforce dataset lab](dataset-card.md) adds a pinned public-source corpus, a fictional support corpus, local retrieval, and a human-review queue. This is not the proposed authenticated two-assistant customer pilot. Begin our collaborative testing with [review session 01](review-session-01.md). No external interviews or independent label reviews have been completed.
+
 1. Which repeated release decisions across assistants are painful enough for a platform team to standardize?
 2. Can an independent reviewer use our evidence to make that decision correctly?
 3. Which rules should be shared, and which thresholds should differ by assistant?

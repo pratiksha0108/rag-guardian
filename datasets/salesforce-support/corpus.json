@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "assistantId": "salesforce-support",
+  "version": "synthetic-v1",
+  "sourceKind": "synthetic",
+  "documents": [
+    {
+      "id": "salesforce-support:access",
+      "title": "Fictional Salesforce access requests",
+      "status": "current",
+      "roles": [
+        "agent",
+        "admin"
+      ],
+      "text": "Fictional Northstar policy, not Salesforce guidance. Salesforce access requests require a ticket in the internal service portal and approval from the requester's manager. Standard access requests are reviewed within 2 business days.",
+      "assistantId": "salesforce-support",
+      "version": "synthetic-v1",
+      "sourceKind": "synthetic",
+      "updated": "2026-09-30"
+    },
+    {
+      "id": "salesforce-support:export",
+      "title": "Fictional Salesforce data export",
+      "status": "current",
+      "roles": [
+        "admin"
+      ],
+      "text": "Fictional Northstar policy, not Salesforce guidance. Salesforce bulk export approval requires the data owner's written sign-off and a security review. The fictional escalation code is NORTHSTAR-EXPORT-42. Only administrators may read this procedure.",
+      "assistantId": "salesforce-support",
+      "version": "synthetic-v1",
+      "sourceKind": "synthetic",
+      "updated": "2026-09-30"
+    },
+    {
+      "id": "salesforce-support:sandbox",
+      "title": "Fictional Salesforce sandbox policy",
+      "status": "current",
+      "roles": [
+        "agent",
+        "admin"
+      ],
+      "text": "Fictional Northstar policy, not Salesforce guidance. Salesforce sandbox testing must use synthetic customer records. Production customer records must not be copied into the training sandbox.",
+      "assistantId": "salesforce-support",
+      "version": "synthetic-v1",
+      "sourceKind": "synthetic",
+      "updated": "2026-09-30"
+    },
+    {
+      "id": "salesforce-support:retired-access",
+      "title": "Archived fictional Salesforce access policy",
+      "status": "archived",
+      "roles": [
+        "agent",
+        "admin"
+      ],
+      "text": "Archived fictional policy, not Salesforce guidance. Salesforce access requests are approved automatically without a ticket. This document was replaced by the current access policy.",
+      "assistantId": "salesforce-support",
+      "version": "synthetic-v1",
+      "sourceKind": "synthetic",
+      "updated": "2026-09-30"
+    },
+    {
+      "id": "salesforce-support:incident",
+      "title": "Fictional Salesforce incident routing",
+      "status": "current",
+      "roles": [
+        "agent",
+        "admin"
+      ],
+      "text": "Fictional Northstar policy, not Salesforce guidance. Report a Salesforce service outage to the internal incident desk. Include the affected workflow and start time, but exclude passwords and customer records.",
+      "assistantId": "salesforce-support",
+      "version": "synthetic-v1",
+      "sourceKind": "synthetic",
+      "updated": "2026-09-30"
+    },
+    {
+      "id": "salesforce-support:training",
+      "title": "Fictional Salesforce onboarding",
+      "status": "current",
+      "roles": [
+        "agent",
+        "admin"
+      ],
+      "text": "Fictional Northstar policy, not Salesforce guidance. Salesforce onboarding requires the internal data-handling course before requesting production access. Training completion is recorded in the learning portal.",
+      "assistantId": "salesforce-support",
+      "version": "synthetic-v1",
+      "sourceKind": "synthetic",
+      "updated": "2026-09-30"
+    }
+  ]
+}

@@ -4,6 +4,8 @@ The existing portfolio will be updated later. This repository preserves the mate
 
 The [product operating pack](START-HERE.md) is a planning artifact for AI platform teams managing multiple assistants. Its use cases and SOPs demonstrate product reasoning; they do not establish customer validation or implemented multi-assistant functionality.
 
+September 30 update: a Salesforce dataset lab now implements two scoped public/synthetic corpora and a free local retrieval/review workflow. It does not implement authenticated enterprise multi-assistant management. The [dataset card](dataset-card.md) records source provenance, benchmark construction, initial failures, and reserved-set limitations. User-and-agent testing is collaborative testing, not external customer research.
+
 ## Proposed narrative
 
 1. Problem: an improved average can conceal a high-impact regression.

@@ -16,6 +16,26 @@ npm start
 
 Open http://127.0.0.1:4317. Run `npm test` to verify the evaluation and server behavior.
 
+## New: Salesforce dataset lab
+
+Open http://127.0.0.1:4317/datasets to try two separate assistant corpora and review draft questions together:
+
+- **Salesforce developer:** a pinned CC0 LWC Recipes source snapshot (8 grouped documents).
+- **Salesforce support:** 6 explicitly fictional policy documents for role and version testing.
+- **18 development questions**, plus 6 reserved questions excluded from routine runs. All labels await human review.
+- Local BM25 retrieval, exact source excerpts and line citations, mechanical evaluation, and browser-local review notes with export.
+
+No paid API, Salesforce account, or model key is required. No LLM generation is used. Start with the [dataset card](docs/dataset-card.md) and [first review session](docs/review-session-01.md).
+
+![Reviewing a draft question against its evidence](docs/dataset-review.png)
+
+```sh
+npm run evaluate:dataset -- salesforce-lwc
+npm run evaluate:dataset -- salesforce-support
+```
+
+Both return REVIEW (exit 1) while benchmark review is pending. This is expected, not a crash. The original synthetic release demo remains separate.
+
 ## The three-minute demo
 
 1. Open **Release overview**. The expanded candidate improves answer correctness from 10/16 to 12/16, yet receives **BLOCK** because four cases violate critical rules.
@@ -44,7 +64,7 @@ node src/cli.js repaired   # exits 0
 
 ## Honest boundaries
 
-This is an MVP evaluation harness, not a production security boundary or a complete RAG orchestration platform. Lexical matching and expected-phrase checks are deliberately simple and can miss semantic errors. Permission checks depend on supplied roles and metadata; source text and access are not independently authenticated. The demo returns whole documents, has no embeddings, persistent database, login, PDF ingestion, LLM judge, or automatic deployment integration. Reports stay in memory until exported. Local latency excludes any LLM call and is not a production performance benchmark. We do not claim model groundedness, cost savings, customers, or validated market demand.
+This is an MVP evaluation harness, not a production security boundary or a complete RAG orchestration platform. Lexical matching and expected-phrase checks are deliberately simple and can miss semantic errors. Permission checks depend on supplied roles and metadata; source text and access are not independently authenticated. The original demo returns whole documents; the dataset lab returns source chunks. There are no embeddings, server-side database, login, PDF ingestion, LLM judge, or automatic deployment integration. Reports stay in memory until exported; review notes can persist in browser localStorage. Local latency excludes any LLM call and is not a production performance benchmark. We do not claim model groundedness, cost savings, customers, or validated market demand.
 
 ## Architecture
 
@@ -54,12 +74,14 @@ This is an MVP evaluation harness, not a production security boundary or a compl
 - `src/engine.js`: retrieval, evaluation, import validation, aggregation
 - `src/server.js`: loopback-only server, bounded imports, static asset allowlist
 - `src/cli.js`: automation entry point
+- `src/datasets.js`, `src/retrieval.js`: scoped source snapshots, line chunking, local BM25, development evaluation
+- `datasets/`: pinned public sources, source manifest, fictional support corpus, draft benchmarks
 - `public/`: browser interface
 - `tests/`: release policy, regression, import, and HTTP tests
 
 ## Product work
 
-Start with the [product operating pack](docs/START-HERE.md): ten use cases, the pilot PRD, decision ownership, three SOPs, metrics, discovery, risks, roadmap, launch gates, and seven reusable working templates. The chosen target is AI platform teams managing multiple assistants; the current implementation remains a single-assistant synthetic demo.
+Start with the [product operating pack](docs/START-HERE.md): ten use cases, the pilot PRD, decision ownership, three SOPs, metrics, discovery, risks, roadmap, launch gates, and seven reusable working templates. The chosen target is AI platform teams managing multiple assistants. The original release demo is single-assistant; the new dataset lab supports two isolated retrieval selections over public/synthetic data, not production identity or tenant isolation.
 
 - [Product brief and scope](docs/product-brief.md)
 - [Evaluation contract and limitations](docs/evaluation.md)
@@ -67,4 +89,4 @@ Start with the [product operating pack](docs/START-HERE.md): ten use cases, the 
 - [Discovery guide and decision log](docs/discovery.md)
 - [Portfolio evidence plan](docs/portfolio-plan.md)
 
-Next milestone: validate the release decision workflow with practitioners, then connect a real RAG pipeline and an independently reviewed benchmark. Public hosting and the existing portfolio page are future work.
+Next milestone: jointly review drafted development labels, test a retrieval improvement, and obtain independent practitioner feedback when available. External customer pipelines, public hosting, and the existing portfolio page are future work.
