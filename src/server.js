@@ -6,7 +6,7 @@ import { documents, profiles } from './data.js';
 import { assistants, loadDataset } from './datasets.js';
 import { answerQuestion, evaluateDataset } from './retrieval.js';
 
-const files = { '/': ['../public/simple.html', 'text/html'], '/datasets': ['../public/simple.html', 'text/html'], '/simple.js': ['../public/simple.js', 'text/javascript'], '/simple.css': ['../public/simple.css', 'text/css'], '/advanced': ['../public/index.html', 'text/html'], '/dataset-lab': ['../public/datasets.html', 'text/html'], '/app.js': ['../public/app.js', 'text/javascript'], '/style.css': ['../public/style.css', 'text/css'], '/datasets.js': ['../public/datasets.js', 'text/javascript'] };
+const files = { '/visitor.js': ['../public/visitor.js', 'text/javascript'], '/': ['../public/simple.html', 'text/html'], '/datasets': ['../public/simple.html', 'text/html'], '/simple.js': ['../public/simple.js', 'text/javascript'], '/simple.css': ['../public/simple.css', 'text/css'], '/advanced': ['../public/index.html', 'text/html'], '/dataset-lab': ['../public/datasets.html', 'text/html'], '/app.js': ['../public/app.js', 'text/javascript'], '/style.css': ['../public/style.css', 'text/css'], '/datasets.js': ['../public/datasets.js', 'text/javascript'] };
 export function createServer() {
   return http.createServer(async (req, res) => {
     const send = (status, body, type = 'application/json') => { res.writeHead(status, { 'Content-Type': type + '; charset=utf-8', 'X-Content-Type-Options': 'nosniff', 'Cache-Control': 'no-store', 'Content-Security-Policy': "default-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'" }); res.end(type === 'application/json' ? JSON.stringify(body) : body); };

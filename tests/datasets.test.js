@@ -71,11 +71,11 @@ test('query route validates scope and keeps reserved split out of web workflow',
   try {
     assert.equal((await fetch(base+'/datasets')).status,200);
     const home=await (await fetch(base+'/')).text();
-    assert.match(home,/simple.js/);
+    assert.match(home,/visitor.js/);
     assert.equal(await (await fetch(base+'/datasets')).text(),home);
     assert.match(await (await fetch(base+'/advanced')).text(),/app.js/);
     assert.match(await (await fetch(base+'/dataset-lab')).text(),/datasets.js/);
-    for(const asset of ['/simple.js','/simple.css'])assert.equal((await fetch(base+asset)).status,200);
+    for(const asset of ['/visitor.js','/simple.css'])assert.equal((await fetch(base+asset)).status,200);
     assert.equal((await (await fetch(base+'/api/datasets')).json()).length,2);
     assert.equal((await fetch(base+'/api/datasets/salesforce-lwc/evaluate?split=reserved')).status,400);
     assert.equal((await fetch(base+'/api/datasets/salesforce-lwc?split=reserved')).status,400);

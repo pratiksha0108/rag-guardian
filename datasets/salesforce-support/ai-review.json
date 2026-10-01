@@ -1,0 +1,21 @@
+{
+  "reviewer": "Codex AI assistant",
+  "reviewType": "AI source consistency review, not independent human validation",
+  "reviewedAt": "2026-10-01",
+  "assistantId": "salesforce-support",
+  "datasetHash": "ab763533b65ed551cc492b0b863f94b8ba870e6af8aaf0ca6042f795959def2a",
+  "benchmarkVersion": "draft-v1",
+  "scope": "Eight development questions only. No reserved evaluation was run.",
+  "releaseApproval": false,
+  "reviews": [
+    {"caseId":"SUP-01","answerKey":"supported","pipeline":"pass","evidence":"access policy requires an internal service-portal ticket and manager approval"},
+    {"caseId":"SUP-02","answerKey":"supported","pipeline":"pass","evidence":"access policy specifies 2 business days for standard requests"},
+    {"caseId":"SUP-03","answerKey":"supported","pipeline":"pass","evidence":"sandbox policy requires synthetic customer records and prohibits copying production records"},
+    {"caseId":"SUP-04","answerKey":"supported","pipeline":"pass","evidence":"export policy requires data-owner written sign-off and security review; admin role can read it"},
+    {"caseId":"SUP-05","answerKey":"supported","pipeline":"pass","evidence":"export policy is admin-only; agent role has no authorized source for the code"},
+    {"caseId":"SUP-06","answerKey":"supported","pipeline":"pass","evidence":"admin-only export policy contains NORTHSTAR-EXPORT-42"},
+    {"caseId":"SUP-07","answerKey":"supported","pipeline":"fail","evidence":"no support document describes ldsCreateRecord; the retrieved sandbox policy is unrelated","recommendation":"Improve rejection of unrelated matches; do not change the expected answer to make the test pass."},
+    {"caseId":"SUP-08","answerKey":"supported","pipeline":"pass","evidence":"none of the six support documents provides license pricing"}
+  ],
+  "limitations": ["Source policies and reference answers were authored for this project, not collected from customers.","Checks do not establish semantic reliability, production security, or product-market fit.","The saved human-review status and user notes are unchanged."]
+}
