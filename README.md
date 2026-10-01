@@ -4,7 +4,13 @@
 
 An average quality score can improve while an assistant starts exposing restricted information or citing outdated policies. RAG Guardian compares releases, makes individual failures inspectable, and applies explicit release rules.
 
-![RAG Guardian release dashboard](docs/dashboard.png)
+![RAG Guardian guided start](docs/simple-start.png)
+
+## Start here
+
+The home page is a guided walkthrough: **choose a sample → check it → review one answer at a time**. Start with Salesforce support and click **Check sample assistant**. Flagged answers appear first; evidence and technical details stay collapsed until needed. Your review choices are saved in this browser and can be downloaded.
+
+The original release dashboard is still available at `/advanced`, and the full dataset lab at `/dataset-lab`. `/datasets` now opens the same guided experience as the home page.
 
 ## Run locally
 
@@ -18,7 +24,7 @@ Open http://127.0.0.1:4317. Run `npm test` to verify the evaluation and server b
 
 ## New: Salesforce dataset lab
 
-Open http://127.0.0.1:4317/datasets to try two separate assistant corpora and review draft questions together:
+Open http://127.0.0.1:4317/dataset-lab for the advanced source inventory, custom questions, and review table:
 
 - **Salesforce developer:** a pinned CC0 LWC Recipes source snapshot (8 grouped documents).
 - **Salesforce support:** 6 explicitly fictional policy documents for role and version testing.
@@ -38,7 +44,7 @@ Both return REVIEW (exit 1) while benchmark review is pending. This is expected,
 
 ## The three-minute demo
 
-1. Open **Release overview**. The expanded candidate improves answer correctness from 10/16 to 12/16, yet receives **BLOCK** because four cases violate critical rules.
+1. Open `/advanced` → **Release overview**. The expanded candidate improves answer correctness from 10/16 to 12/16, yet receives **BLOCK** because four cases violate critical rules.
 2. Inspect a leave question: the candidate retrieved an archived policy. Inspect an employee compensation question: restricted manager evidence was exposed.
 3. Click **Apply retrieval fixes & rerun**. This restores role and current-document filters; the same 16 questions pass.
 4. Open **Evaluation lab**, adjust the correctness floor, compare releases, search cases, and export a JSON evidence report.
